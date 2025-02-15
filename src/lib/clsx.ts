@@ -1,0 +1,10 @@
+import clsx from 'clsx'
+import { twMerge } from 'tailwind-merge'
+
+/**
+ * `cx` is meant to be a wrapper around twMerge and clsx working together
+ * so that we can deterministically decide what styles to apply
+ */
+export function cx(...classNames: string[]) {
+  return twMerge(clsx(...classNames))
+}

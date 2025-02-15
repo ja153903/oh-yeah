@@ -1,25 +1,29 @@
+export const metadata = { title: "Throttling in JavaScript", description: "Let's take a look into what it means to throttle in UI", publishedAt: "2025-02-15" }
+
+# {metadata.title}
+
 Throttling in JavaScript is when you want to make sure that a callback function isn't called more than once given some cooldown period.
 
 Let's try to implement this in JavaScript.
 
 ```js
 function throttle(func, cooldown) {
-  let isThrottled = false;
-  let result;
+  let isThrottled = false
+  let result
 
-  return function(...args) {
+  return function (...args) {
     if (isThrottled) {
       return result
     }
 
-    result = func.apply(this, args);
-    isThrottled = true;
+    result = func.apply(this, args)
+    isThrottled = true
 
     setTimeout(() => {
-      isThrottled = false;
-    }, cooldown);
+      isThrottled = false
+    }, cooldown)
 
-    return result;
+    return result
   }
 }
 ```
