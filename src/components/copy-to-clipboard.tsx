@@ -1,7 +1,18 @@
 'use client'
 
-import { toast } from 'react-toastify'
+import { toast, type ToastOptions } from 'react-toastify'
 import { cx } from '@/lib/clsx'
+
+const TOAST_CONFIG = {
+  position: 'top-right',
+  autoClose: 1000,
+  hideProgressBar: true,
+  closeOnClick: false,
+  pauseOnHover: true,
+  draggable: false,
+  progress: undefined,
+  theme: 'colored',
+} satisfies ToastOptions
 
 type Props = { content: string }
 
@@ -10,17 +21,14 @@ export function CopyToClipboard(props: Props) {
     <div
       className="absolute right-0"
       onClick={() => {
-        navigator.clipboard.writeText(props.content)
-        toast.success('Copied code to clipboard', {
-          position: 'top-right',
-          autoClose: 1000,
-          hideProgressBar: true,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: false,
-          progress: undefined,
-          theme: 'colored',
-        })
+        navigator.clipboard
+          .writeText(props.content)
+          .then(() => {
+            toast.success('Copied code to clipboard', TOAST_CONFIG)
+          })
+          .catch(() => {
+            toast.error('Failed to copy to clipboard', TOAST_CONFIG)
+          })
       }}
     >
       <svg
