@@ -11,9 +11,7 @@ export default async function Home() {
 
   return (
     <div>
-      <div>
-        <BlogIndex metadata={metadata} />
-      </div>
+      <BlogIndex metadata={metadata} />
     </div>
   )
 }
