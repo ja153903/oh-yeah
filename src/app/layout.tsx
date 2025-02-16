@@ -17,8 +17,11 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Oh Yeah',
+  title: 'Oh yeah',
   description: 'A blog by Jaime Abbariao',
+  icons: {
+    icon: './favicon.png',
+  },
 }
 
 export default function RootLayout({
