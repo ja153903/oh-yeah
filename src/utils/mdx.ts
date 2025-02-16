@@ -5,10 +5,16 @@ export function getSlugsFromFilenames() {
   const mdxPath = path.join(process.cwd(), 'src/content')
   const files = fs.readdirSync(mdxPath)
 
-  return files.map((file) => {
-    const [filename] = file.split('.')
-    return { slug: filename }
-  })
+  return files
+    .map((file) => {
+      const [filename, extension] = file.split('.')
+      if (extension.startsWith('md')) {
+        return { slug: filename }
+      }
+
+      return null
+    })
+    .filter((slug) => slug !== null)
 }
 
 export async function getMetadataFromFilenames() {
