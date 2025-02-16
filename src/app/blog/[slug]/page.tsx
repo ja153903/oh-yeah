@@ -11,7 +11,11 @@ export default async function Page({
   const { slug } = await params
   const { default: Post } = await import(`@/content/${slug}.mdx`)
 
-  return <Post components={{ code }} />
+  return (
+    <div className="p-4">
+      <Post components={{ code }} />
+    </div>
+  )
 }
 
 function code({

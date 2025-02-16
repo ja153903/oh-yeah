@@ -15,7 +15,7 @@ type BlogIndexProps = {
 
 export function BlogIndex(props: BlogIndexProps) {
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col p-4">
       <div className="flex flex-col gap-3">
         {props.metadata.map((metadata) => {
           return (
