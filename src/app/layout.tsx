@@ -36,7 +36,8 @@ export default function RootLayout({
           'bg-base03 dark:bg-base03',
           'text-base1 dark:text-base01',
           'flex flex-col justify-center items-center',
-          'h-full pb-10 w-full'
+          'h-full pb-10 w-full',
+          'overflow-y-scroll'
         )}
       >
         <NavBar />
