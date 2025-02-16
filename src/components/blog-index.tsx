@@ -34,7 +34,7 @@ function BlogItemPreview(props: BlogItemPreviewProps) {
     <div className="flex flex-col gap-1">
       <Link
         href={`/blog/${props.slug}`}
-        className="text-lg underline text-cyan"
+        className="text-lg font-bold underline text-cyan"
       >
         {props.title}
       </Link>
