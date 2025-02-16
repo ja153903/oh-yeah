@@ -1,7 +1,7 @@
 export const metadata = { 
   title: "0.1 + 0.2 !== 0.3",
-  description: "How infinite binary representations make numbers unintuitive in computer science", 
-  publishedAt: "2025-02-15"
+  description: "How infinite binary representations make numbers unintuitive", 
+  publishedAt: "2025-02-16"
 }
 
 # {metadata.title}
@@ -40,24 +40,24 @@ as a reduced fraction with the following form:
 
 for any $\alpha \neq 0$ and $n \ge 0$.
 
-For example, if we take $0.1$, we can see that as a fraction it has the form
+For example, if we take 0.1, we can see that as a fraction it has the form
 
 # $$\frac{1}{10}$$
 
-where we can see that $10$ is not a power of 2. So we know that $0.1$ has an infinite binary representation.
+where we can see that 10 is not a power of 2. So we know that $0.1$ has an infinite binary representation.
 
-Similarly, $0.2$ when reduced has the form
+Similarly, 0.2 when reduced has the form
 
 # $$\frac{1}{5}$$
 
-where we see again that $5$ is not a power of 2. So the sum of two values that have infinite binary representation
+where we see again that 5 is not a power of 2. So the sum of two values that have infinite binary representation
 will also have an infinite binary representation.
 
 Now where does the rounding error come in? The programming language has constraints on how many bits it stores.
 In JavaScript's case, we keep 64 bits. From the infinite number of bits that the sum of 0.1 and 0.2 give us, we'll
 keep 64 of them.
 
-This difference in bits between $0.1 + 0.2$ and $0.3$ are enough to cause an error when comparing the two values!
+This difference in bits between 0.1 + 0.2 and 0.3 are enough to cause an error when comparing the two values!
 
 Here is some code in order to prove this:
 
