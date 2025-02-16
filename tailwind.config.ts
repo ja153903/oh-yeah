@@ -39,7 +39,7 @@ export default {
         'prose-inline-code',
         '&.prose :where(:not(pre)>code):not(:where([class~="not-prose"] *))'
       )
-      addVariant('prose-math-formula', '&.prose h1:has(span.katex)')
+      addVariant('prose-math-formula', '&.prose h2:has(span.katex)')
     }),
   ],
 } satisfies Config
