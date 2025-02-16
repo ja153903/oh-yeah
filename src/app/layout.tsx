@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: 'Oh yeah',
   description: 'A blog by Jaime Abbariao',
   icons: {
-    icon: './favicon.png',
+    icon: './favicon.ico',
   },
 }
 

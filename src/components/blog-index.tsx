@@ -40,7 +40,7 @@ function BlogItemPreview(props: BlogItemPreviewProps) {
       </Link>
       <p className="text-md italic">{props.description}</p>
       <p className="text-sm text-green text-right">
-        published at {props.publishedAt}
+        published on {props.publishedAt}
       </p>
     </div>
   )
