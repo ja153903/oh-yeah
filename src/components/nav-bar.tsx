@@ -8,7 +8,7 @@ export function NavBar() {
     <div
       className={cx(
         'sticky top-0 z-10',
-        'flex flex-col pt-6 pb-8 px-4 gap-4 justify-center items-center w-full',
+        'flex flex-col pt-6 pb-5 px-4 gap-4 justify-center items-center w-full',
         'backdrop-filter backdrop-blur-lg'
       )}
     >
