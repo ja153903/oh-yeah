@@ -1,8 +1,7 @@
-import fs from 'fs'
-import path from 'path'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { solarizedDark } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import { CopyToClipboard } from '@/components/copy-to-clipboard'
+import { getSlugsFromFilenames } from '@/utils/mdx'
 
 export default async function Page({
   params,
@@ -24,14 +23,16 @@ function code({
 }>) {
   const match = /language-(\w+)/.exec(className || '')
   return match ? (
-    <div className="relative">
-      <CopyToClipboard content={properties.children as string} />
-      <SyntaxHighlighter
-        language={match[1]}
-        PreTag="div"
-        style={solarizedDark}
-        {...properties}
-      />
+    <div className="ring-2 ring-base01 rounded-lg px-4 py-2">
+      <div className="relative">
+        <CopyToClipboard content={properties.children as string} />
+        <SyntaxHighlighter
+          showLineNumbers
+          language={match[1]}
+          style={solarizedDark}
+          {...properties}
+        />
+      </div>
     </div>
   ) : (
     <code className={className} {...properties} />
@@ -41,14 +42,4 @@ function code({
 export function generateStaticParams() {
   const slugs = getSlugsFromFilenames()
   return slugs
-}
-
-function getSlugsFromFilenames() {
-  const mdxPath = path.join(process.cwd(), 'src/content')
-  const files = fs.readdirSync(mdxPath)
-
-  return files.map((file) => {
-    const [filename, _extension] = file.split('.')
-    return { slug: filename }
-  })
 }

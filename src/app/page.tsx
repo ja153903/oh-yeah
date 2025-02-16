@@ -1,7 +1,19 @@
-export default function Home() {
+import { BlogIndex } from '@/components/blog-index'
+import { getMetadataFromFilenames } from '@/utils/mdx'
+
+export default async function Home() {
+  const metadata = (await getMetadataFromFilenames()).toSorted((a, b) => {
+    const aDate = new Date(a.publishedAt)
+    const bDate = new Date(b.publishedAt)
+
+    return bDate.getTime() - aDate.getTime()
+  })
+
   return (
     <div>
-      <h1>Welcome to my site</h1>
+      <div>
+        <BlogIndex metadata={metadata} />
+      </div>
     </div>
   )
 }
