@@ -21,5 +21,7 @@ function Section({
   className,
   children,
 }: React.PropsWithChildren<{ className?: string }>) {
-  return <div className={cx('flex flex-col gap-3', className)}>{children}</div>
+  return (
+    <div className={cx('flex flex-col gap-3 p-4', className)}>{children}</div>
+  )
 }
