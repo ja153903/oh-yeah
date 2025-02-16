@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { toast, type ToastOptions } from 'react-toastify'
 import { cx } from '@/lib/clsx'
 
@@ -17,9 +18,13 @@ const TOAST_CONFIG = {
 type Props = { content: string }
 
 export function CopyToClipboard(props: Props) {
+  const [hover, setHover] = useState(false)
+
   return (
     <button
-      className="absolute right-0"
+      className="absolute right-0 w-6 h-6"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
       onClick={() => {
         navigator.clipboard
           .writeText(props.content)
@@ -39,7 +44,8 @@ export function CopyToClipboard(props: Props) {
         className={cx(
           'size-6 cursor-pointer',
           'stroke-green',
-          'hover:stroke-base03 dark:hover:stroke-base3 hover:fill-green'
+          'active:fill-green',
+          !hover && 'hidden'
         )}
       >
         <path
