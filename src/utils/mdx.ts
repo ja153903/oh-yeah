@@ -6,7 +6,7 @@ export function getSlugsFromFilenames() {
   const files = fs.readdirSync(mdxPath)
 
   return files.map((file) => {
-    const [filename, _extension] = file.split('.')
+    const [filename] = file.split('.')
     return { slug: filename }
   })
 }
