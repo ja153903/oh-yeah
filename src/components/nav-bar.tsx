@@ -1,10 +1,17 @@
 'use client'
 
 import Link from 'next/link'
+import { cx } from '@/lib/clsx'
 
 export function NavBar() {
   return (
-    <div className="sticky top-0 z-10 flex flex-col pt-10 pb-8 justify-center items-center w-full backdrop-filter backdrop-blur-lg px-4 gap-4">
+    <div
+      className={cx(
+        'sticky top-0 z-10',
+        'flex flex-col pt-10 pb-8 px-4 gap-4 justify-center items-center w-full',
+        'backdrop-filter backdrop-blur-lg'
+      )}
+    >
       <Link
         className="text-cyan font-geist-sans font-bold mr-3 underline text-3xl"
         href="/"
