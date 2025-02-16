@@ -2,7 +2,20 @@ export const metadata = { title: "Throttling in JavaScript", description: "Let's
 
 # {metadata.title}
 
-Throttling in JavaScript is when you want to make sure that a callback function isn't called more than once given some cooldown period.
+Suppose that you're on an ecommerce site. You add a bunch of items to
+your cart. Now it's time to pay.
+
+You hit the checkout button, but it's taking way too long. So like
+any reasonable person, you click it over and over and over again.
+
+From a UI developer's point of view, this is a nightmare.
+Each click of the button fires off a request and if you don't
+have the proper guardrails, you could be making more requests that you need.
+
+This is where throttling can come in. The idea of throttling is making sure
+that there's a cooldown period between each request. In the case
+of our impatient shopper, we can use throttling to make sure that each
+click of the checkout button won't result in more server calls!
 
 Let's try to implement this in JavaScript.
 
@@ -28,10 +41,12 @@ function throttle(func, cooldown) {
 }
 ```
 
-This function `throttle` takes a function and a cooldown period as its arguments.
-It returns a function that we can call with any number of arguments.
+So how is this code throttling anything? This function wraps another function
+that fires the request to be sent to the server. We keep track of `isThrottled`
+which guards whether we call the callback function.
 
-If the function is currently throttled, then we'll return the previous result.
-Otherwise, we evaluate the function with the given arguments and set `isThrottled` to true.
+We use a `setTimeout` here in order to flip `isThrottled` back to false and
+allow requests to be sent again after some `cooldown` period.
 
-We also call a `setTimeout` such that after some cooldown period, we set `isThrottled` back to false.
+Although it's a naive implementation, it should illustrate how we can throttle
+any event handlers in the UI!
