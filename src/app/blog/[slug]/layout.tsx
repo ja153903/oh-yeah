@@ -10,7 +10,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         'prose-p:text-base1 dark:prose-p:text-base01',
         'prose-inline-code:text-green',
         'prose-math-formula:text-center',
-        'prose-strong:text-magenta'
+        'prose-strong:text-magenta',
+        'w-full max-w-none md:w-auto md:max-w-[65ch]'
       )}
     >
       {children}
