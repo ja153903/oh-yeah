@@ -1,7 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+
 import { toast, type ToastOptions } from 'react-toastify'
+
 import { cx } from '@/lib/clsx'
 
 const TOAST_CONFIG = {

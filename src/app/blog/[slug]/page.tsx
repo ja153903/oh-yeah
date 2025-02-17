@@ -1,5 +1,6 @@
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { solarizedDark } from 'react-syntax-highlighter/dist/esm/styles/hljs'
+
 import { CopyToClipboard } from '@/components/copy-to-clipboard'
 import { getSlugsFromFilenames } from '@/utils/mdx'
 

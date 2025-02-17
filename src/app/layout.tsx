@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { ToastContainer } from 'react-toastify'
-import { cx } from '@/lib/clsx'
+
 import { NavBar } from '@/components/nav-bar'
+import { cx } from '@/lib/clsx'
 
 import './globals.css'
 

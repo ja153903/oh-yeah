@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# lint
+echo "Start linting..."
+pnpm lint
+
+# format
+echo "Start formatting..."
+pnpm format

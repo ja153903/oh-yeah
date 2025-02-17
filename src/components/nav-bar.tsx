@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+
 import { cx } from '@/lib/clsx'
 
 export function NavBar() {

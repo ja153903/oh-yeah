@@ -1,9 +1,9 @@
 import createMDX from '@next/mdx'
+import type { NextConfig } from 'next'
+import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import remarkMdx from 'remark-mdx'
-import rehypeKatex from 'rehype-katex'
-import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],

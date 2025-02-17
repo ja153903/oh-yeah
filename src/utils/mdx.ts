@@ -1,5 +1,5 @@
-import path from 'path'
 import fs from 'fs'
+import path from 'path'
 
 export function getSlugsFromFilenames() {
   const mdxPath = path.join(process.cwd(), 'src/content')
@@ -17,13 +17,20 @@ export function getSlugsFromFilenames() {
     .filter((slug) => slug !== null)
 }
 
-export async function getMetadataFromFilenames() {
+type Metadata = {
+  slug: string
+  publishedAt: Date
+  title: string
+  description: string
+}
+
+export async function getMetadataFromFilenames(): Promise<Metadata[]> {
   const slugs = getSlugsFromFilenames()
 
   return Promise.all(
     slugs.map(async ({ slug }) => {
       const { metadata } = await import(`@/content/${slug}.mdx`)
-      return { ...metadata, slug }
+      return { ...metadata, slug, publishedAt: new Date(metadata.publishedAt) }
     })
   )
 }

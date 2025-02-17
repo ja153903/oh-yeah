@@ -6,7 +6,7 @@ export type Metadata = {
   slug: string
   title: string
   description: string
-  publishedAt: string
+  publishedAt: Date
 }
 
 type BlogIndexProps = {
@@ -40,7 +40,7 @@ function BlogItemPreview(props: BlogItemPreviewProps) {
       </Link>
       <p className="text-md italic">{props.description}</p>
       <p className="text-sm text-green text-right">
-        published on {props.publishedAt}
+        published on {props.publishedAt.toLocaleDateString()}
       </p>
     </div>
   )

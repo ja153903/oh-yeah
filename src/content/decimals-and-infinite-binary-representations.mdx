@@ -1,7 +1,7 @@
-export const metadata = { 
-  title: "0.1 + 0.2 !== 0.3",
-  description: "How infinite binary representations make numbers unintuitive", 
-  publishedAt: "2025-02-16"
+export const metadata = {
+  title: '0.1 + 0.2 !== 0.3',
+  description: 'How infinite binary representations make numbers unintuitive',
+  publishedAt: '2025-02-16',
 }
 
 # {metadata.title}
@@ -34,9 +34,9 @@ This means that all our expressions and operations will have corresponding binar
 Decimal numbers are interesting in that they can have either finite or infinite binary representations.
 
 We say that a decimal number has an finite binary representation if and only if it can be expressed
-as a reduced fraction with the following form: 
+as a reduced fraction with the following form:
 
-## $$ \frac{\alpha}{2^n} $$ 
+## $$ \frac{\alpha}{2^n} $$
 
 for any $\alpha \neq 0$ and $n \ge 0$.
 
@@ -66,23 +66,18 @@ function toBinary64(num) {
   let buffer = new ArrayBuffer(8)
   let view = new DataView(buffer)
 
-  view.setFloat64(0, num, false) 
+  view.setFloat64(0, num, false)
 
-  let binary = [];
+  let binary = []
   for (let i = 0; i < 8; i++) {
-    binary.push(
-      view
-        .getUint8(i)
-        .toString(2)
-        .padStart(8, '0')
-    )
+    binary.push(view.getUint8(i).toString(2).padStart(8, '0'))
   }
 
   return binary.join(' ')
 }
 
-console.log("0.1 + 0.2:", toBinary64(0.1 + 0.2))
-console.log("0.3:", toBinary64(0.3))
+console.log('0.1 + 0.2:', toBinary64(0.1 + 0.2))
+console.log('0.3:', toBinary64(0.3))
 ```
 
 Note that the first statement will log: `0.1 + 0.2: 00111111 11010011 00110011 00110011 00110011 00110011 00110011 00110100`
