@@ -1,0 +1,68 @@
+export const metadata = {
+  title: 'Byte-sized Frontend Interviews: Flatten',
+  description: "Taking a look at a common JavaScript interview question",
+  publishedAt: '2025-02-17',
+}
+
+# {metadata.title}
+
+Suppose that you're given an array that contains either a number or another array. Flatten the array such that all the
+values exist on a single level.
+
+For example, if we had the array `[1, [2, 3, [4, 5]]]`, we would expect that the result is `[1, 2, 3, 4, 5]`.
+
+This problem lends itself to be recursive in nature because of how an array could contain more arrays which would
+need to unpack so that all the values will exist on a single level.
+
+For each item in the array, there are two possible operations:
+
+- If the item is a number, then we add that number to our resulting array
+- If the item is an array, then we should recursively call the function with the current array.
+
+Here's a straightforward implementation for this algorithm:
+
+```javascript
+function flatten(array) {
+  const result = []
+
+  for (const item of array) {
+    if (Array.isArray(item)) {
+      result.push(...flatten(item))
+    } else {
+      result.push(item)
+    }
+  }
+
+  return result
+}
+```
+
+This solution takes advantage of the spread operator in JavaScript and the variadic nature of the `push` method's arguments list.
+the `result.push(...flatten(item))` line makes sure that we recursively call `flatten` with the `item` which is currently an array
+and then spreads the result of the recursive call into `result.push` which allows us to push any number of items into the
+array.
+
+Another recursive solution we can offer here is by using the `Array.prototype.flatMap` method with recursion.
+
+```javascript
+function flatten(array) {
+  if (!Array.isArray(array)) {
+    return array
+  }
+
+  return array.flatMap((item) => flatten(item)) 
+}
+```
+
+We reduce the verbosity of the solution by provide a sleek functional solution.
+`Array.prototype.flatMap` helps us make sure that any array solution we receive gets flattened by one level.
+
+For example, if we did something like,
+
+```javascript
+[1, 2, 3].flatMap((num) => [num, num * 2])
+```
+
+We would expect that the solution is `[1, 2, 2, 4, 3, 6]` rather than `[[1, 2], [2, 4], [3, 6]]`
+because `flatMap` makes sure that the values are hoisted up one level from the array.
+
