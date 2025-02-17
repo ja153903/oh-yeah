@@ -20,7 +20,10 @@ export function NavBar() {
         Oh yeah
       </Link>
       <p className="text-md text-base00 dark:text-base0">
-        a blog by <span className="text-green italic">Jaime Abbariao</span>
+        a blog by{' '}
+        <Link className="text-green italic" href="/about-me">
+          Jaime Abbariao
+        </Link>
       </p>
     </div>
   )
