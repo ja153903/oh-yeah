@@ -7,3 +7,12 @@ pnpm lint
 # format
 echo "Start formatting..."
 pnpm format
+PRETTIER_EXIT_CODE=$?
+
+# If Prettier succeeds, re-stage the changed files
+if [ $PRETTIER_EXIT_CODE -eq 0 ]; then
+  git add .
+else
+  echo "Prettier formatting failed. Fix the issues and commit again."
+  exit 1
+fi
