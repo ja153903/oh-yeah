@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default async function Page() {
   return (
     <div className="p-4 flex flex-col gap-5 w-full max-w-none md:w-auto md:max-w-[100ch]">
-      <h1 className="text-lg font-bold underline">About me</h1>
+      <h1 className="text-lg font-bold underline text-cyan">About me</h1>
       <div className="flex flex-col gap-3">
         <p>
           Hi! I&apos;m a software engineer at{' '}
