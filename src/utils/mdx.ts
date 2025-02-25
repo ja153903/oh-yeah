@@ -1,14 +1,16 @@
 import fs from 'fs'
 import path from 'path'
 
+const getContentPath = (cwd: string) => path.join(cwd, 'src/content')
+
 export function getSlugsFromFilenames() {
-  const mdxPath = path.join(process.cwd(), 'src/content')
+  const mdxPath = getContentPath(process.cwd())
   const files = fs.readdirSync(mdxPath)
 
   return files
     .map((file) => {
       const [filename, extension] = file.split('.')
-      if (extension.startsWith('md')) {
+      if (extension.endsWith('mdx')) {
         return { slug: filename }
       }
 
