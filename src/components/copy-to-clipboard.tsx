@@ -24,6 +24,7 @@ export function CopyToClipboard(props: Props) {
 
   return (
     <button
+      type="button"
       className="absolute right-0 w-6 h-6"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
@@ -50,6 +51,7 @@ export function CopyToClipboard(props: Props) {
           !hover && 'hidden'
         )}
       >
+        <title>Copy to clipboard</title>
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
