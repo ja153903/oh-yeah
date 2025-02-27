@@ -1,0 +1,65 @@
+export const metadata = {
+  title: 'Implement a Trie in TypeScript',
+  description: "Let's implement a nifty data structure for storing prefixes",
+  publishedAt: '2025-02-26',
+  draft: true,
+}
+
+# {metadata.title}
+
+A trie is a tree-like data structure where each level of the tree can contain an arbitrary number of
+child nodes. In most cases, we'll typically have up to 26 given that we use tries a lot to represent
+characters in our alphabet. This is the very use-case that we'll go over.
+
+Let's start by first defining our initial node data structure
+
+```typescript
+class Trie {
+  value: string
+  children: Map<string, Trie>
+  isWord: boolean
+
+  constructor() {
+    this.value = value
+    this.children = new Map()
+    this.isWord = false
+  }
+}
+```
+
+The simplest implementation for a node for now will have the following items:
+
+- the `value` at the point
+- `children` containing any child nodes
+- `isWord` an indicator whether the string to this point can be considered its own word
+
+So let's do a test run and insert a word into the trie. Suppose that we want to add the word `race` into the
+trie. We'll need a method that will allow us to insert the word from the root trie node.
+
+```typescript
+class Trie {
+  // Omitting implementation from above
+  insert(word: string) {
+    let current: Trie = this
+
+    for (const character of word) {
+      if (!current.children.has(character)) {
+        // we'll set a new Trie node entry
+        current.children.set(character, new Trie())
+      }
+
+      const child = current.get(character)
+      if (!child) {
+        throw new Error(
+          'Absurd error. But we define it anyway to satisfy typescript'
+        )
+      }
+
+      current = child
+    }
+  }
+}
+```
+
+The above method iterates over each character of the word we're trying to insert and creates a new entry into the children's map
+if it wasn't set before.

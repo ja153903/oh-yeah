@@ -3,9 +3,11 @@ import { cx } from '@/lib/clsx'
 import { getMetadataFromFilenames } from '@/utils/mdx'
 
 export default async function Home() {
-  const metadata = (await getMetadataFromFilenames()).toSorted((a, b) => {
-    return b.publishedAt.getTime() - a.publishedAt.getTime()
-  })
+  const metadata = (await getMetadataFromFilenames())
+    .filter(({ draft }) => !draft)
+    .toSorted((a, b) => {
+      return b.publishedAt.getTime() - a.publishedAt.getTime()
+    })
 
   return (
     <Section className="p-4">

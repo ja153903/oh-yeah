@@ -24,6 +24,7 @@ type Metadata = {
   publishedAt: Date
   title: string
   description: string
+  draft?: boolean
 }
 
 export async function getMetadataFromFilenames(): Promise<Metadata[]> {
