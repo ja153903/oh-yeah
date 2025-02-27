@@ -3,6 +3,14 @@ import path from 'path'
 
 const getContentPath = (cwd: string) => path.join(cwd, 'src/content')
 
+export type Metadata = {
+  slug: string
+  publishedAt: Date
+  title: string
+  description: string
+  draft?: boolean
+}
+
 export function getSlugsFromFilenames() {
   const mdxPath = getContentPath(process.cwd())
   const files = fs.readdirSync(mdxPath)
@@ -11,7 +19,7 @@ export function getSlugsFromFilenames() {
     .map((file) => {
       const [filename, extension] = file.split('.')
       if (extension.endsWith('mdx')) {
-        return { slug: filename }
+        return filename
       }
 
       return null
@@ -19,19 +27,11 @@ export function getSlugsFromFilenames() {
     .filter((slug) => slug !== null)
 }
 
-type Metadata = {
-  slug: string
-  publishedAt: Date
-  title: string
-  description: string
-  draft?: boolean
-}
-
 export async function getMetadataFromFilenames(): Promise<Metadata[]> {
   const slugs = getSlugsFromFilenames()
 
   return Promise.all(
-    slugs.map(async ({ slug }) => {
+    slugs.map(async (slug) => {
       const { metadata } = await import(`@/content/${slug}.mdx`)
       return { ...metadata, slug, publishedAt: new Date(metadata.publishedAt) }
     })

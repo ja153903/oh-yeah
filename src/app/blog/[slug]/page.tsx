@@ -25,5 +25,5 @@ export default async function Page({
 
 export function generateStaticParams() {
   const slugs = getSlugsFromFilenames()
-  return slugs
+  return slugs.map((slug) => ({ slug }))
 }

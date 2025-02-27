@@ -2,16 +2,12 @@
 
 import Link from 'next/link'
 
-export type Metadata = {
-  slug: string
-  title: string
-  description: string
-  publishedAt: Date
-}
+import type { Metadata } from '@/utils/mdx'
 
 type BlogIndexProps = {
   metadata: Metadata[]
 }
+type BlogIndexItemPreviewProps = Metadata
 
 export function BlogIndex(props: BlogIndexProps) {
   return (
@@ -19,7 +15,7 @@ export function BlogIndex(props: BlogIndexProps) {
       {props.metadata.map((metadata) => {
         return (
           <div key={metadata.slug}>
-            <BlogItemPreview {...metadata} />
+            <BlogIndexItemPreview {...metadata} />
           </div>
         )
       })}
@@ -27,9 +23,7 @@ export function BlogIndex(props: BlogIndexProps) {
   )
 }
 
-type BlogItemPreviewProps = Metadata
-
-function BlogItemPreview(props: BlogItemPreviewProps) {
+function BlogIndexItemPreview(props: BlogIndexItemPreviewProps) {
   return (
     <div className="flex flex-col gap-1">
       <Link
